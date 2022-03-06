@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { error } = require("console");
 const fs = require("fs");
 const HTMLParser = require("node-html-parser");
 const {addressGenerator} = require('./addressGenerator');
