@@ -2,19 +2,32 @@ const axios = require("axios");
 const { error } = require("console");
 const fs = require("fs");
 const HTMLParser = require("node-html-parser");
+const {addressGenerator} = require('./addressGenerator');
+// const adressAlphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
+const adressAlphabet = 'abc';
+const addressLenght = 3;
 
 const baseFolder = "pictures";
 const baseUrl = "https://prnt.sc/";
 
-const prefix = getAllUrlPrefix();
+const generator = addressGenerator(adressAlphabet, addressLenght);
 
-function getAllUrlPrefix() {
-    text = fs.readFileSync("prefix.txt", "utf8");
-    // console.log(text);
-    const arr = text.split("\n");
-    // console.log(array);
-    return arr;
+let adress = generator.next();
+
+while (!adress.done) {
+    console.log(adress);
+    adress = generator.next();
 }
+
+// const prefix = getAllUrlPrefix();
+
+// function getAllUrlPrefix() {
+//     text = fs.readFileSync("prefix.txt", "utf8");
+//     // console.log(text);
+//     const arr = text.split("\n");
+//     // console.log(array);
+//     return arr;
+// }
 
 // console.log(prefix.length);
 
@@ -27,7 +40,7 @@ const array = ["1", "2", "df4fd", "s", "psikaby", "23", "000000"];
 //     }, index * Math.random() * 10000);
 // });
 
-getImage("1aa1bb");
+// getImage("1aa1bb");
 
 async function getImage(shortUrl) {
     console.log(shortUrl);
