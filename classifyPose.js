@@ -1,7 +1,6 @@
 "use strict"
 
 const fs = require('fs');
-const mobilenet = require('@tensorflow-models/mobilenet');
 const poseDetection = require('@tensorflow-models/pose-detection');
 const tfnode = require('@tensorflow/tfjs-node');
 
@@ -10,10 +9,7 @@ const tfnode = require('@tensorflow/tfjs-node');
 const classify = (fileName) => {
     fs.readFile(`pictures/${fileName}.jpg`, (err, data) => {
         const tfimage = tfnode.node.decodeJpeg(data);
-        // console.log(tfimage)
-        const localPoseDetection = tfnode.loadLayersModel('file://models/default/model.json');
-        // poseDetection.createDetector(poseDetection.)
-        localPoseDetection.createDetector(poseDetection.SupportedModels.MoveNet)
+        poseDetection.createDetector(poseDetection.SupportedModels.MoveNet)
             .then((detector) => {
                 console.log(detector);
                 detector.estimatePoses(tfimage).then((poses) => {

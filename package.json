@@ -8,11 +8,13 @@
     "start": "node index.js",
     "gen": "node generate.js",
     "fill": "node fillIndex.js",
-    "class": "node classifyPose.js"
+    "class": "node classifynsfw.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow-models/body-pix": "^2.2.0",
+    "@tensorflow-models/coco-ssd": "^2.2.2",
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow-models/pose-detection": "^2.0.0",
     "@tensorflow/tfjs": "^3.14.0",
@@ -21,6 +23,7 @@
     "fs": "^0.0.1-security",
     "image-size": "^1.0.1",
     "jimp": "^0.16.1",
-    "node-html-parser": "^5.2.0"
+    "node-html-parser": "^5.2.0",
+    "nsfwjs": "^2.4.1"
   }
 }

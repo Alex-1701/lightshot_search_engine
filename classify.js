@@ -27,6 +27,7 @@ const classify = (fileName) => {
             clearInterval(timerId);
             console.log('2');
             fs.readFile(`pictures/${fileName}.jpg`, (err, data) => {
+                console.log(data);
                 const tfimage = tfnode.node.decodeImage(data);
                 mobilenet.load({
                     version: 2,
@@ -40,10 +41,11 @@ const classify = (fileName) => {
                         console.log(JSON.stringify(predictions));
                         console.log(JSON.stringify(predictions).length);
                     });
-                    fs.unlink(`pictures/${fileName}.jpg`, (err) => {
-                        if (err) throw err;
-                        console.log('File deleted!');
-                    });
+                    // Delete file.
+                    // fs.unlink(`pictures/${fileName}.jpg`, (err) => {
+                    //     if (err) throw err;
+                    //     console.log('File deleted!');
+                    // });
                 });
             });
             // console.log('3');
