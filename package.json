@@ -8,7 +8,9 @@
     "start": "node index.js",
     "gen": "node generate.js",
     "fill": "node fillIndex.js",
-    "class": "node classifynsfw.js"
+    "class": "node classifynsfw.js",
+    "link": "node page_parser.js",
+    "save": "node save_image.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,10 +22,13 @@
     "@tensorflow/tfjs": "^3.14.0",
     "@tensorflow/tfjs-node": "^3.14.0",
     "axios": "^0.26.0",
+    "express": "^4.17.3",
     "fs": "^0.0.1-security",
     "image-size": "^1.0.1",
     "jimp": "^0.16.1",
+    "multer": "^1.4.4",
     "node-html-parser": "^5.2.0",
-    "nsfwjs": "^2.4.1"
+    "nsfwjs": "^2.4.1",
+    "perf_hooks": "^0.0.1"
   }
 }
