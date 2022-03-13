@@ -10,7 +10,8 @@
     "fill": "node fillIndex.js",
     "class": "node classifynsfw.js",
     "link": "node page_parser.js",
-    "save": "node save_image.js"
+    "save": "node save_image.js",
+    "db": "node work_with_index.js"
   },
   "author": "",
   "license": "ISC",
