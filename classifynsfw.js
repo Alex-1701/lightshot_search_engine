@@ -29,9 +29,8 @@ const classifyNSFWByFile = async (file) => {
     // Image must be in tf.tensor3d format
     // you can convert image to tf.tensor3d with tf.node.decodeImage(Uint8Array,channels)
 
-    console.log(file);
+    const image = await tf.node.decodeImage(new Uint8Array(file), 3);
 
-    const image = await tf.node.decodeImage(file);
     const predictions = await model.classify(image);
     image.dispose(); // Tensor memory must be managed explicitly (it is not sufficient to let a tf.Tensor go out of scope for its memory to be released).
     // console.log(predictions);
