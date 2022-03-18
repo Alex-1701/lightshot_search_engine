@@ -27,24 +27,34 @@ const sleep = (time) => {
 }
 
 const main = async () => {
+    let adressCounter = 0;
+
     while (!adress.done) {
+        adressCounter ++ ;
         // const test0 = performance.now();
         const t0 = performance.now();
 
         const newAdress = adress.value;
-        console.log(newAdress, await isInRegistry(newAdress));
-        // const imageURL = await getImageLink(newAdress);
-        // const analyzeRes = await analyzeLink(imageURL);
-        // const analyzePercent = parseFloat((analyzeRes).toFixed(2)) * 100
-        // console.log(newAdress, analyzeRes, analyzePercent);
-        // appendToRegistry(newAdress, analyzePercent);
+        const isVisited = await isInRegistry(newAdress);
 
-
-
+        if (!isVisited) {
+            // console.log(newAdress, isVisited);
+            const imageURL = await getImageLink(newAdress);
+            // console.log
+            const analyzeRes = await analyzeLink(imageURL);
+            const analyzePercent = parseFloat((analyzeRes).toFixed(2)) * 100;
+            // console.log(newAdress, analyzeRes, analyzePercent);
+            appendToRegistry(newAdress, analyzePercent);
+            console.log(adressCounter, newAdress, analyzePercent);
+            
+            const t1 = performance.now();
+            const passedTime = t1 - t0;
+            await sleep(Math.random() * (maxDelay - minDelay) + minDelay - passedTime);
+        }
+        
+        
+        
         adress = generator.next();
-        const t1 = performance.now();
-        const passedTime = t1 - t0;
-        await sleep(Math.random() * (maxDelay - minDelay) + minDelay - passedTime);
         // const test1 = performance.now();
         // console.log(test1- test0);
     }

@@ -1,7 +1,6 @@
 "use strict"
 
 const sqlite3 = require("sqlite3").verbose();
-const { performance } = require('perf_hooks');
 
 const closeDB = (db) => {
     db.close((err) => {
@@ -35,15 +34,18 @@ const appendToRegistry = async (url, value) => {
 
 const isInRegistry = async (url) => {
     const sql = `SELECT * FROM 'index' WHERE (url == '${url}')`;
-    console.log(sql);
-    try {
-        const res = await db.get(sql);
-        console.log (res);
-        return res;
-    } catch {
-        console.log('error', sql);
-    }
-}
+    // console.log(sql);
+    return new Promise((resolve) => {
+        db.get(sql, (err, row) => {
+            // console.log(row);
+            if (row === undefined) {
+                resolve(false);
+            } else {
+                resolve(true);
+            }
+        })
 
+    })
+}
 
 module.exports = { openDB, closeDB, appendToRegistry, isInRegistry }
