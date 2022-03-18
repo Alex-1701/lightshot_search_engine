@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "gen": "node generate.js",
     "fill": "node fillIndex.js",
     "class": "node classifynsfw.js",
     "link": "node page_parser.js",
     "save": "node save_image.js",
-    "db": "node work_with_index.js"
+    "db": "node work_with_index.js",
+    "memory": "node overflow_memory.js"
   },
   "author": "",
   "license": "ISC",
